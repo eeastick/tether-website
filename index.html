@@ -3,35 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tether — Still Close</title>
+  <title>Tether — Implantable cardiac monitoring for dogs</title>
   <meta name="description" content="Tether is an implantable cardiac monitor for dogs living with heart disease — giving vets the data they need and owners the peace they deserve.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --forest:   #1B3326;
-      --amber:    #C87C2A;
-      --cream:    #F5F1EA;
-      --cream-dk: #EAE4D9;
-      --text:     #1B3326;
-      --muted:    #5A6B5E;
+      --cream:    #FAF7F2;
+      --parch:    #EDE8DF;
+      --bark:     #2C2420;
+      --bark-dk:  #1E1510;
+      --amber:    #B8864E;
+      --stone:    #847A6E;
+      --dust:     #C4B9AC;
+      --moss:     #4A6741;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--cream);
-      color: var(--text);
+      color: var(--bark);
       font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -39,19 +41,24 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.25rem 2.5rem;
+      padding: 1.1rem 2.5rem;
       background: var(--cream);
-      border-bottom: 1px solid var(--cream-dk);
+      border-bottom: 1px solid var(--parch);
     }
 
     .wordmark {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 1.4rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--forest);
+      display: flex;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
+    }
+
+    .wordmark-text {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: none;
+      color: var(--bark);
     }
 
     nav ul {
@@ -61,55 +68,79 @@
     }
 
     nav a {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--stone);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    nav a:hover { color: var(--forest); }
+    nav a:hover { color: var(--bark); }
 
-    /* HERO */
-    .hero {
+    /* ── HERO ── */
+    .hero-wrap {
+      position: relative;
       min-height: 100svh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 8rem 2.5rem 5rem;
-      max-width: 900px;
-      margin: 0 auto;
+      align-items: center;
+      background-image: url("hero.jpeg");
+      background-size: cover;
+      background-position: center 38%;
     }
 
-    .tagline {
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
+    .hero-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(14, 9, 5, 0.88) 0%,
+        rgba(14, 9, 5, 0.72) 35%,
+        rgba(14, 9, 5, 0.3) 65%,
+        rgba(14, 9, 5, 0.05) 100%
+      );
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 8rem 2.5rem 5rem max(2.5rem, 8%);
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--amber);
       margin-bottom: 1.75rem;
     }
 
     h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 600;
       line-height: 1.1;
-      color: var(--forest);
+      letter-spacing: -0.025em;
+      color: var(--cream);
       margin-bottom: 1.75rem;
-      max-width: 780px;
+      max-width: 560px;
     }
 
     h1 em {
-      font-style: italic;
-      font-weight: 300;
+      font-style: normal;
+      color: var(--amber);
     }
 
     .hero-sub {
       font-size: 1rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.75;
+      font-weight: 400;
+      color: rgba(237, 232, 223, 0.7);
+      max-width: 460px;
+      line-height: 1.8;
       margin-bottom: 3rem;
     }
 
@@ -122,52 +153,55 @@
 
     .btn-primary {
       display: inline-block;
-      background: var(--forest);
+      background: var(--amber);
       color: var(--cream);
       padding: 0.85rem 2rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 400;
+      font-size: 0.78rem;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       text-decoration: none;
+      border-radius: 3px;
       transition: background 0.2s;
     }
 
-    .btn-primary:hover { background: var(--amber); }
+    .btn-primary:hover { background: var(--bark-dk); }
 
     .btn-ghost {
       display: inline-block;
-      color: var(--muted);
-      font-size: 0.8rem;
+      color: var(--stone);
+      font-size: 0.78rem;
+      font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       text-decoration: none;
-      border-bottom: 1px solid var(--cream-dk);
+      border-bottom: 1px solid var(--dust);
       padding-bottom: 2px;
       transition: color 0.2s, border-color 0.2s;
     }
 
-    .btn-ghost:hover { color: var(--forest); border-color: var(--forest); }
+    .btn-ghost:hover { color: var(--bark); border-color: var(--bark); }
 
-    /* DIVIDER */
+    /* ── DIVIDER ── */
     .divider {
-      width: 40px;
+      width: 32px;
       height: 1px;
       background: var(--amber);
       margin: 0 auto;
     }
 
-    /* WHAT IT IS */
+    /* ── WHAT IT IS ── */
     .what {
       padding: 6rem 2.5rem;
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
     }
 
     .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--amber);
       margin-bottom: 2.5rem;
@@ -180,29 +214,29 @@
     }
 
     .what-grid h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
       line-height: 1.25;
-      color: var(--forest);
+      color: var(--bark-dk);
       margin-bottom: 1rem;
     }
 
     .what-grid p {
-      font-size: 0.9rem;
-      color: var(--muted);
+      font-size: 0.92rem;
+      color: var(--stone);
       line-height: 1.8;
     }
 
-    /* HOW */
+    /* ── HOW ── */
     .how {
-      background: var(--forest);
+      background: var(--bark-dk);
       color: var(--cream);
       padding: 6rem 2.5rem;
     }
 
     .how-inner {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
     }
 
@@ -216,49 +250,49 @@
     }
 
     .step-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
+      font-size: 2.4rem;
       font-weight: 300;
       color: var(--amber);
       opacity: 0.5;
       line-height: 1;
       margin-bottom: 1rem;
+      letter-spacing: -0.03em;
     }
 
     .how h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 1.4rem;
+      font-size: 1.15rem;
+      font-weight: 600;
       color: var(--cream);
       margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
     }
 
     .how p {
-      font-size: 0.85rem;
-      color: rgba(245, 241, 234, 0.65);
+      font-size: 0.88rem;
+      color: rgba(250, 247, 242, 0.55);
       line-height: 1.8;
     }
 
-    /* WAITLIST */
+    /* ── WAITLIST ── */
     .waitlist {
       padding: 7rem 2.5rem;
-      max-width: 620px;
+      max-width: 600px;
       margin: 0 auto;
       text-align: center;
     }
 
     .waitlist h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -0.025em;
       line-height: 1.2;
-      color: var(--forest);
+      color: var(--bark-dk);
       margin-bottom: 1rem;
     }
 
     .waitlist p {
-      font-size: 0.9rem;
-      color: var(--muted);
+      font-size: 0.92rem;
+      color: var(--stone);
       margin-bottom: 2.5rem;
       line-height: 1.75;
     }
@@ -266,52 +300,54 @@
     .waitlist-form {
       display: flex;
       gap: 0;
-      max-width: 480px;
+      max-width: 460px;
       margin: 0 auto;
     }
 
     .waitlist-form input[type="email"] {
       flex: 1;
       padding: 0.85rem 1.25rem;
-      border: 1px solid var(--cream-dk);
+      border: 1px solid var(--parch);
       border-right: none;
       background: white;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
-      color: var(--text);
+      font-size: 0.88rem;
+      color: var(--bark);
       outline: none;
       transition: border-color 0.2s;
+      border-radius: 3px 0 0 3px;
     }
 
-    .waitlist-form input[type="email"]:focus { border-color: var(--forest); }
+    .waitlist-form input[type="email"]:focus { border-color: var(--bark); }
 
     .waitlist-form button {
-      background: var(--forest);
+      background: var(--bark-dk);
       color: var(--cream);
       border: none;
       padding: 0.85rem 1.5rem;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.75rem;
-      font-weight: 400;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       cursor: pointer;
       transition: background 0.2s;
       white-space: nowrap;
+      border-radius: 0 3px 3px 0;
     }
 
     .waitlist-form button:hover { background: var(--amber); }
 
     .form-note {
       font-size: 0.75rem;
-      color: var(--muted);
+      color: var(--stone);
       margin-top: 1rem;
       opacity: 0.7;
     }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--cream-dk);
+      border-top: 1px solid var(--parch);
       padding: 2rem 2.5rem;
       display: flex;
       justify-content: space-between;
@@ -320,35 +356,37 @@
       gap: 1rem;
     }
 
-    footer .wordmark {
-      font-size: 1rem;
-    }
-
     footer p {
       font-size: 0.75rem;
-      color: var(--muted);
+      color: var(--stone);
     }
 
     footer a {
-      color: var(--muted);
+      color: var(--stone);
       text-decoration: none;
       font-size: 0.75rem;
       transition: color 0.2s;
     }
 
-    footer a:hover { color: var(--forest); }
+    footer a:hover { color: var(--bark); }
 
-    /* RESPONSIVE */
-    @media (max-width: 680px) {
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       nav ul { gap: 1.25rem; }
-      .hero, .what { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .what { padding-left: 1.5rem; padding-right: 1.5rem; }
       .what-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .how { padding-left: 1.5rem; padding-right: 1.5rem; }
       .how-steps { grid-template-columns: 1fr; gap: 2rem; }
       .waitlist { padding-left: 1.5rem; padding-right: 1.5rem; }
       .waitlist-form { flex-direction: column; }
-      .waitlist-form input[type="email"] { border-right: 1px solid var(--cream-dk); border-bottom: none; }
+      .waitlist-form input[type="email"] {
+        border-right: 1px solid var(--parch);
+        border-bottom: none;
+        border-radius: 3px 3px 0 0;
+      }
+      .waitlist-form button { border-radius: 0 0 3px 3px; }
       footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -356,23 +394,33 @@
 <body>
 
   <nav>
-    <a href="/" class="wordmark">Tether</a>
+    <a href="/" class="wordmark">
+      <!-- Thread mark -->
+      <svg width="28" height="20" viewBox="0 0 110 80" fill="none" aria-hidden="true">
+        <circle cx="16" cy="40" r="6" fill="#B8864E"/>
+        <path d="M 22,40 C 42,12 68,68 88,40" stroke="#B8864E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="94" cy="40" r="6" fill="#B8864E"/>
+      </svg>
+      <span class="wordmark-text">tether</span>
+    </a>
     <ul>
-      <li><a href="#how-it-works">How it works</a></li>
+      <!-- <li><a href="#how-it-works">How it works</a></li> -->
       <li><a href="#waitlist">For vets</a></li>
-      <li><a href="mailto:erin@tetherveterinary.com">Contact</a></li>
+      <li><a href="mailto:eastick.erin@gmail.com">Contact</a></li>
     </ul>
   </nav>
 
-  <section class="hero">
-    <p class="tagline">Still close</p>
-    <h1>Their heart,<br><em>watched over</em><br>between visits.</h1>
-    <p class="hero-sub">Tether is an implantable cardiac monitor for dogs living with heart disease — giving vets the continuous data they need and owners the peace they deserve.</p>
-    <div class="cta-group">
-      <a href="#waitlist" class="btn-primary">Join the waitlist</a>
-      <a href="#how-it-works" class="btn-ghost">How it works</a>
-    </div>
-  </section>
+  <div class="hero-wrap">
+    <section class="hero">
+      <p class="eyebrow">Caught early. Protected for longer.</p>
+      <h1>Their heart,<br><em>watched over</em><br>between visits.</h1>
+      <p class="hero-sub">Tether is an implantable cardiac monitor for dogs living with heart disease. It gives specialists the continuous data they need and owners the peace they deserve.</p>
+      <div class="cta-group">
+        <a href="#waitlist" class="btn-primary">Join the waitlist</a>
+        <a href="#how-it-works" class="btn-ghost" style="color:rgba(237,232,223,0.55); border-color:rgba(237,232,223,0.2);">How it works</a>
+      </div>
+    </section>
+  </div>
 
   <div class="divider"></div>
 
@@ -381,34 +429,11 @@
     <div class="what-grid">
       <div>
         <h2>For owners</h2>
-        <p>Heart disease means frequent check-ins, anxious nights, and the constant question of whether your dog is okay right now. Tether monitors continuously — so you're not flying blind between appointments.</p>
+        <p>Heart disease means frequent check-ins, anxious nights, and the constant question of whether your dog is okay right now. Tether monitors continuously, so you're not flying blind between appointments.</p>
       </div>
       <div>
         <h2>For vets</h2>
-        <p>Clinical decisions deserve clinical data. Tether gives cardiologists and internists continuous insight into cardiac and respiratory function — without hospitalizing the patient to get it.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="how" id="how-it-works">
-    <div class="how-inner">
-      <p class="section-label">How it works</p>
-      <div class="how-steps">
-        <div>
-          <div class="step-num">01</div>
-          <h3>Implanted once</h3>
-          <p>A small device placed subcutaneously in the left thorax — a routine procedure for any vet familiar with implantables.</p>
-        </div>
-        <div>
-          <div class="step-num">02</div>
-          <h3>Senses continuously</h3>
-          <p>Tether tracks cardiac rhythm, respiratory impedance, and body temperature during rest — when the signal is clearest and most clinically meaningful.</p>
-        </div>
-        <div>
-          <div class="step-num">03</div>
-          <h3>Delivers insight</h3>
-          <p>Data syncs to the owner's phone and the vet dashboard automatically. Trends surface early. Alerts reach the right people before a crisis develops.</p>
-        </div>
+        <p>Clinical decisions deserve clinical data. Tether gives veterinarians continuous insight into cardiac and respiratory function, without hospitalizing the patient to get it.</p>
       </div>
     </div>
   </section>
@@ -416,7 +441,7 @@
   <section class="waitlist" id="waitlist">
     <p class="section-label">Early access</p>
     <h2>Be the first to know when Tether is ready.</h2>
-    <p>We're working with a small group of veterinary cardiologists and internists on our first clinical validation. If you'd like to be involved — or just stay informed — leave your email.</p>
+    <p>We're working with a small group of veterinary specialists on our first clinical validation. If you'd like to be involved or just stay informed, leave your email.</p>
     <form class="waitlist-form" onsubmit="handleSubmit(event)">
       <input type="email" placeholder="your@email.com" required>
       <button type="submit">Stay in touch</button>
@@ -425,16 +450,23 @@
   </section>
 
   <footer>
-    <a href="/" class="wordmark">Tether</a>
-    <p>Tether Veterinary Technologies Inc. &mdash; Alberta, Canada</p>
-    <a href="mailto:erin@tetherveterinary.com">erin@tetherveterinary.com</a>
+    <a href="/" class="wordmark">
+      <svg width="22" height="16" viewBox="0 0 110 80" fill="none" aria-hidden="true">
+        <circle cx="16" cy="40" r="6" fill="#847A6E"/>
+        <path d="M 22,40 C 42,12 68,68 88,40" stroke="#847A6E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="94" cy="40" r="6" fill="#847A6E"/>
+      </svg>
+      <span class="wordmark-text" style="color: var(--stone); font-size: 0.88rem;">tether</span>
+    </a>
+    <p>Tether Veterinary Technologies Inc. · Alberta, Canada</p>
+    <a href="mailto:eastick.erin@gmail.com">eastick.erin@gmail.com</a>
   </footer>
 
   <script>
     function handleSubmit(e) {
       e.preventDefault();
       const email = e.target.querySelector('input[type="email"]').value;
-      window.location.href = 'mailto:erin@tetherveterinary.com?subject=Tether waitlist&body=Please add me to the Tether waitlist: ' + email;
+      window.location.href = 'mailto:eastick.erin@gmail.com?subject=Tether waitlist&body=Please add me to the Tether waitlist: ' + email;
     }
   </script>
 
