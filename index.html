@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tether — Still Close</title>
+  <meta name="description" content="Tether is an implantable cardiac monitor for dogs living with heart disease — giving vets the data they need and owners the peace they deserve.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:   #1B3326;
+      --amber:    #C87C2A;
+      --cream:    #F5F1EA;
+      --cream-dk: #EAE4D9;
+      --text:     #1B3326;
+      --muted:    #5A6B5E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: var(--cream);
+      border-bottom: 1px solid var(--cream-dk);
+    }
+
+    .wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--forest);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--forest); }
+
+    /* HERO */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2.5rem 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .tagline {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.75rem;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.1;
+      color: var(--forest);
+      margin-bottom: 1.75rem;
+      max-width: 780px;
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--forest);
+      color: var(--cream);
+      padding: 0.85rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--amber); }
+
+    .btn-ghost {
+      display: inline-block;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid var(--cream-dk);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--forest); border-color: var(--forest); }
+
+    /* DIVIDER */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--amber);
+      margin: 0 auto;
+    }
+
+    /* WHAT IT IS */
+    .what {
+      padding: 6rem 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 2.5rem;
+    }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .what-grid h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 1.25;
+      color: var(--forest);
+      margin-bottom: 1rem;
+    }
+
+    .what-grid p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* HOW */
+    .how {
+      background: var(--forest);
+      color: var(--cream);
+      padding: 6rem 2.5rem;
+    }
+
+    .how-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .how .section-label { color: var(--amber); }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--amber);
+      opacity: 0.5;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .how h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+
+    .how p {
+      font-size: 0.85rem;
+      color: rgba(245, 241, 234, 0.65);
+      line-height: 1.8;
+    }
+
+    /* WAITLIST */
+    .waitlist {
+      padding: 7rem 2.5rem;
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .waitlist h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      color: var(--forest);
+      margin-bottom: 1rem;
+    }
+
+    .waitlist p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 0;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .waitlist-form input[type="email"] {
+      flex: 1;
+      padding: 0.85rem 1.25rem;
+      border: 1px solid var(--cream-dk);
+      border-right: none;
+      background: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .waitlist-form input[type="email"]:focus { border-color: var(--forest); }
+
+    .waitlist-form button {
+      background: var(--forest);
+      color: var(--cream);
+      border: none;
+      padding: 0.85rem 1.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .waitlist-form button:hover { background: var(--amber); }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      opacity: 0.7;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--cream-dk);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer .wordmark {
+      font-size: 1rem;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--forest); }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { gap: 1.25rem; }
+      .hero, .what { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .what-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .how { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .how-steps { grid-template-columns: 1fr; gap: 2rem; }
+      .waitlist { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .waitlist-form { flex-direction: column; }
+      .waitlist-form input[type="email"] { border-right: 1px solid var(--cream-dk); border-bottom: none; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="wordmark">Tether</a>
+    <ul>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#waitlist">For vets</a></li>
+      <li><a href="mailto:erin@tetherveterinary.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <p class="tagline">Still close</p>
+    <h1>Their heart,<br><em>watched over</em><br>between visits.</h1>
+    <p class="hero-sub">Tether is an implantable cardiac monitor for dogs living with heart disease — giving vets the continuous data they need and owners the peace they deserve.</p>
+    <div class="cta-group">
+      <a href="#waitlist" class="btn-primary">Join the waitlist</a>
+      <a href="#how-it-works" class="btn-ghost">How it works</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="what" id="what">
+    <p class="section-label">What Tether does</p>
+    <div class="what-grid">
+      <div>
+        <h2>For owners</h2>
+        <p>Heart disease means frequent check-ins, anxious nights, and the constant question of whether your dog is okay right now. Tether monitors continuously — so you're not flying blind between appointments.</p>
+      </div>
+      <div>
+        <h2>For vets</h2>
+        <p>Clinical decisions deserve clinical data. Tether gives cardiologists and internists continuous insight into cardiac and respiratory function — without hospitalizing the patient to get it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how-it-works">
+    <div class="how-inner">
+      <p class="section-label">How it works</p>
+      <div class="how-steps">
+        <div>
+          <div class="step-num">01</div>
+          <h3>Implanted once</h3>
+          <p>A small device placed subcutaneously in the left thorax — a routine procedure for any vet familiar with implantables.</p>
+        </div>
+        <div>
+          <div class="step-num">02</div>
+          <h3>Senses continuously</h3>
+          <p>Tether tracks cardiac rhythm, respiratory impedance, and body temperature during rest — when the signal is clearest and most clinically meaningful.</p>
+        </div>
+        <div>
+          <div class="step-num">03</div>
+          <h3>Delivers insight</h3>
+          <p>Data syncs to the owner's phone and the vet dashboard automatically. Trends surface early. Alerts reach the right people before a crisis develops.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="waitlist" id="waitlist">
+    <p class="section-label">Early access</p>
+    <h2>Be the first to know when Tether is ready.</h2>
+    <p>We're working with a small group of veterinary cardiologists and internists on our first clinical validation. If you'd like to be involved — or just stay informed — leave your email.</p>
+    <form class="waitlist-form" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit">Stay in touch</button>
+    </form>
+    <p class="form-note">No spam. We'll reach out when there's something worth sharing.</p>
+  </section>
+
+  <footer>
+    <a href="/" class="wordmark">Tether</a>
+    <p>Tether Veterinary Technologies Inc. &mdash; Alberta, Canada</p>
+    <a href="mailto:erin@tetherveterinary.com">erin@tetherveterinary.com</a>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      window.location.href = 'mailto:erin@tetherveterinary.com?subject=Tether waitlist&body=Please add me to the Tether waitlist: ' + email;
+    }
+  </script>
+
+</body>
+</html>
